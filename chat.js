@@ -20,11 +20,13 @@ form.addEventListener("submit", async (e) => {
   input.value = "";
 
   try {
-    const response = await fetch("http://localhost:3000/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userText }),
-    });
+    // Use relative URL assuming backend is deployed together on same domain with /api/chat endpoint
+const response = await fetch("/chat", {  // or "/api/chat" if you configured so
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ message: userText }),
+});
+
 
     if (!response.ok) throw new Error("Network response was not ok");
 
